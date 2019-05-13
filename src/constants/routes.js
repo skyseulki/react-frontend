@@ -1,0 +1,7 @@
+export const ROOT = '/'
+export const HOME = '/home'
+export const POSTS = '/posts'
+export const RESTAURANTS = '/restaurants'
+export const USERS = '/users'
+export const LOGIN = '/login'
+export const LOGOUT = '/logout'

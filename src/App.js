@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+import NavBar from './component/NavBar'
+import Login from './component/Login/Login'
+import ShowUser from './component/ShowUser/ShowUser'
+import RestaurantsContainer from './component/RestaurantsContainer/RestaurantsContainer'
+
+import * as routes from './constants/routes'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    currentUser: null
+  }
+
+  doSetCurrentUser = user =>
+    this.setState({
+      currentUser: user
+    })
+
+  render() {
+    const { currentUser } = this.state
+    return (
+      <div>
+        <NavBar currentUser={currentUser} />
+        <Switch>
+          <Route exact path={routes.ROOT} render={() => <div>ROOT or groot?</div>} />
+          <Route exact path={routes.HOME} render={() => <div>HOME</div>} />
+          <Route exact path={routes.USERS} render={() => <div>USERS</div>} />
+          <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
+          <Route exact path={routes.POSTS} render={() => <div>POSTS</div>} />
+          <Route exact path={routes.RESTAURANTS} render={() => <RestaurantsContainer currentUser={currentUser}/> } />
+          <Route exact path={routes.LOGIN} render={() => <Login currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
+          <Route render={() => <div>NOT FOUND</div>} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
