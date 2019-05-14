@@ -15,17 +15,20 @@ class Restaurants extends Component {
                 'Content-type': 'application/json'
             }
         });
+        const userJson = await addRestaurant.json()
+        this.props.doSetCurrentUser(userJson.user)
     }
+
     render () {
         const restaurantsList = this.props.restaurants.map((restaurant, i) => {
             return(
                 <li key={i}>
-                    <span>{restaurant.name}</span><br/>
+                    <span><a href= {restaurant.url}>{restaurant.name}</a></span><br/>
                     <small>{restaurant.categories.map((c, idx) => <span key={idx}>{c.title}</span>)}</small>
                     <img src={restaurant.image_url}></img>
                     {
                         this.props.currentUser
-                            && <button onClick={() => this.doAddResturant(restaurant.id, restaurant.name)}>Add</button>
+                            && !this.props.currentUser.restaurants.some(r => r.id === restaurant.id) && <button onClick={() => this.doAddResturant(restaurant.id, restaurant.name)}>Add</button>
                     }
                 </li>)
         })

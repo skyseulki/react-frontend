@@ -15,7 +15,6 @@ class ShowUser extends Component {
     doGetUser = async () => {
         try {
             const user = await fetch(`/users/${this.props.match.params.id}`)
-            // https://api.yelp.com/v3/businesses/${this.props.match.params.id}
             const parsedUser = await user.json()
             return parsedUser
 
@@ -23,6 +22,23 @@ class ShowUser extends Component {
             console.log(err)
         }
     } 
+
+    deleteRestaurant = async (id, e) => {
+        try {
+            const removeRestaurant = await fetch(`/users/${this.props.match.params.id}/restaurants/${id}`,
+            {
+                method: 'DELETE'
+            });
+            const removeRestaurantJson = await removeRestaurant.json();
+            this.setState({
+                user: removeRestaurantJson.user
+            });
+
+        } catch(err){
+            console.log(err)
+        }
+    };
+
     render() {
         return (
             <div>
@@ -30,11 +46,13 @@ class ShowUser extends Component {
                 {this.state.user.restaurants && this.state.user.restaurants.map((r,i) => 
                     <li>
                         <Link to={`/restaurants/${r.id}`}>{r.name}</Link>
+                        <button onClick={() => this.deleteRestaurant(r.id)}>Delete</button>
                     </li>
                 )}
             </div>
         )
     }
 }
+
 
 export default withRouter(ShowUser);

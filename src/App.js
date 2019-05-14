@@ -30,7 +30,7 @@ class App extends Component {
           <Route exact path={routes.USERS} render={() => <div>USERS</div>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
           <Route exact path={routes.POSTS} render={() => <div>POSTS</div>} />
-          <Route exact path={routes.RESTAURANTS} render={() => <RestaurantsContainer currentUser={currentUser}/> } />
+          <Route exact path={routes.RESTAURANTS} render={() => <RestaurantsContainer currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/> } />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
           <Route render={() => <div>NOT FOUND</div>} />
         </Switch>
