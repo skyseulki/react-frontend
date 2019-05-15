@@ -26,7 +26,8 @@ class Login extends Component {
     });
     
         const parsedResponse = await loginResponse.json();
-        if(parsedResponse.success){ 
+        console.log(parsedResponse)
+        if(parsedResponse.user){ 
             this.props.doSetCurrentUser(parsedResponse.user)
                 this.setState({
                     logged: true

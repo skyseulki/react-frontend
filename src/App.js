@@ -26,9 +26,9 @@ class App extends Component {
         <NavBar currentUser={currentUser} />
         <Switch>
           <Route exact path={routes.ROOT} render={() => <div>ROOT or groot?</div>} />
-          <Route exact path={routes.HOME} render={() => <div>HOME</div>} />
+          <Route exact path={routes.REGISTER} render={() => <div>Register</div>} />
           <Route exact path={routes.USERS} render={() => <div>USERS</div>} />
-          <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
+          <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser doSetCurrentUser={this.doSetCurrentUser} currentUser={this.state.currentUser}/>} />
           <Route exact path={routes.POSTS} render={() => <div>POSTS</div>} />
           <Route exact path={routes.RESTAURANTS} render={() => <RestaurantsContainer currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/> } />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
