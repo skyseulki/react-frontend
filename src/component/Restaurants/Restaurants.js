@@ -10,7 +10,7 @@ class Restaurants extends Component {
         const addRestaurant= await fetch('/restaurants', {
             method: 'POST',
             credentials: 'include',
-            body: JSON.stringify({id, name, currentUser}),
+            body: JSON.stringify({ id, name, currentUser }),
             headers: {
                 'Content-type': 'application/json'
             }
@@ -23,13 +23,13 @@ class Restaurants extends Component {
         const restaurantsList = this.props.restaurants.map((restaurant, i) => {
             return(
                 <li key={i}>
-                    <span><a href= {restaurant.url}>{restaurant.name}</a></span><br/>
-                    <small>{restaurant.categories.map((c, idx) => <span key={idx}>{c.title}</span>)}</small>
-                    <img src={restaurant.image_url}></img>
+                    <span><a href={restaurant.url}>{restaurant.name}</a>  {restaurant.price}</span><br/>
+                    <img src={restaurant.image_url}></img><br/>
+                    <small>{restaurant.categories.map((c, idx) => <span key={idx}>{c.title}</span>)}</small><br/>
                     {
                         this.props.currentUser
                             && !this.props.currentUser.restaurants.some(r => r.id === restaurant.id) && <button onClick={() => this.doAddResturant(restaurant.id, restaurant.name)}>Add</button>
-                    }
+                    }<br/>
                 </li>)
         })
         return (

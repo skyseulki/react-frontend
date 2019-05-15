@@ -6,6 +6,7 @@ class ShowUser extends Component {
     state = {
         user: {}
     }
+    
 
     componentDidMount() {
         this.doGetUser()
@@ -43,9 +44,11 @@ class ShowUser extends Component {
         return (
             <div>
                 <h1>Hello, {this.state.user.username}</h1>
+                <Link to={'/'}>Edit Profile</Link>
                 {this.state.user.restaurants && this.state.user.restaurants.map((r,i) => 
                     <li>
-                        <Link to={`/restaurants/${r.id}`}>{r.name}</Link>
+                        {/* <a href={r.url}>{r.name}</a> */}
+                        <Link to={r.url}>{r.name}</Link>
                         <button onClick={() => this.deleteRestaurant(r.id)}>Delete</button>
                     </li>
                 )}
