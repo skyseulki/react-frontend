@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import * as routes from '../constants/routes'
 import './NavBar.css'
 
-const NavBar = ({ currentUser }) => 
+const NavBar = ({ currentUser, doLogOut }) => 
     <div className="navbar is-primary">
         <NavLink className='navbar-item' to={routes.REGISTER} activeClassName='active'>Register </NavLink>
         {
@@ -17,7 +17,7 @@ const NavBar = ({ currentUser }) =>
         <NavLink className='navbar-item' to={routes.ROOT} exact activeClassName='active'>ROOT </NavLink>
         {
             currentUser
-                ? <NavLink className='navbar-item' to={routes.REGISTER} activeClassName='active'>Logout, {currentUser.username}</NavLink>
+                ? <NavLink className='navbar-item' to={routes.REGISTER} activeClassName='active' onClick={doLogOut}>Logout, {currentUser.username}</NavLink>
                 : <NavLink className='navbar-item' to={'/login'} activeClassName='active'>Login </NavLink>
         }
 

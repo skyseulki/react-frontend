@@ -27,11 +27,16 @@ class Login extends Component {
     
         const parsedResponse = await loginResponse.json();
         console.log(parsedResponse)
+        //parsedResponse.success
         if(parsedResponse.user){ 
             this.props.doSetCurrentUser(parsedResponse.user)
                 this.setState({
                     logged: true
                 })
+        } else {
+            this.setState({
+                message: 'try again'
+            })
         }
     };
 
@@ -44,6 +49,9 @@ class Login extends Component {
                 <input type='text' name='username' placeholder='username' value={username} onChange={this.changeHandler} />
                 <input type='password' name='password' placeholder='password' value={password} onChange={this.changeHandler} />
                 <button type='submit'>Submit</button>
+                {
+                    this.state.message
+                }
             </form>
         )
     };

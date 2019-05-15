@@ -67,7 +67,7 @@ class ShowUser extends Component {
         const updatedUser = await fetch(`/users/${this.props.match.params.id}`, {
             method: 'PUT',
             credentials: 'include',
-            body: JSON.stringify({username: this.state.username}),
+            body: JSON.stringify({ username: this.state.username }),
             headers: {
                 'Content-type': 'application/json'
             }
