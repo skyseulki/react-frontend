@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Project 3: React-Express-API
 
-### Object of the website
+### Objective of the website
 
-This website allow users to browse through top resturants in Los Angeles, and upon their liking, add it to their profile.
+With dating apps all targeting the same audience, this one is specifically for those in relationships! On this website, users are able to browse through top restaurants in Los Angeles, and add it to their profile for future references. Their "favorited" restaurants will be bookmarked on their profile, and the user can log into their account whenever they please to see their list of restaurants they would like to visit with their partner. 
 
 ### Built With
 
@@ -19,7 +19,7 @@ This website allow users to browse through top resturants in Los Angeles, and up
 * [Bulma](https://bulma.io/)
 
 
-##### Future Implements
+### Future Implements
 
 * Different categories includes activities, events, places to visit, bars, and cafes
 * Allow users to share their ideal date schedule with others
