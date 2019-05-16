@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import './Login.css'
 
 class Login extends Component {
     state = {
@@ -35,7 +36,7 @@ class Login extends Component {
                 })
         } else {
             this.setState({
-                message: 'try again'
+                message: 'Username and/or Password incorrect.'
             })
         }
     };
@@ -46,9 +47,27 @@ class Login extends Component {
             this.state.logged
             ? <Redirect to={`/users/${this.props.currentUser._id}`} />
             : <form onSubmit={this.onSubmit}>
-                <input type='text' name='username' placeholder='username' value={username} onChange={this.changeHandler} />
-                <input type='password' name='password' placeholder='password' value={password} onChange={this.changeHandler} />
-                <button type='submit'>Submit</button>
+                <h1 class='message is-large'>Login</h1>
+                <div class='field'>
+                    <p class='control has-icons-left has-icons-right'>
+                        <input class='input is-large' type='text' name='username' placeholder='Username' value={username} onChange={this.changeHandler} />
+                        <span class='icon is-medium is-left'>
+                            <i class='far fa-smile'></i>
+                        </span>
+                        <span class='icon is-medium is-right'>
+                            <i class='fas fa-check'></i>
+                        </span>
+                    </p>
+                </div>
+                <div class='field'>
+                    <p class='control has-icons-left'>
+                        <input class='input is-large' type='password' name='password' placeholder='Password' value={password} onChange={this.changeHandler} />
+                        <span class='icon is-medium is-left'>
+                            <i class='fas fa-lock'></i>
+                        </span>
+                    </p>
+                </div>
+                <button class="button is-link" type='submit'>Submit</button><br/>
                 {
                     this.state.message
                 }

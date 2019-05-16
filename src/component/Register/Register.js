@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import './Register.css'
 
 class Register extends Component {
     state = {
@@ -39,9 +40,9 @@ class Register extends Component {
     render(){
         // console.log(this.state)
         const { username, password } = this.state
-        return(
+        return (
             <div>
-                <h1>Register your account</h1>
+                <h1 class='message is-large'>Register your account</h1>
                 {
                     this.state.logged
                     ? <Redirect to={`/users/${this.props.currentUser._id}`} />
@@ -59,11 +60,23 @@ class Register extends Component {
 
 const RegisterForm = ({ changeHandler, onSubmit, username, password }) => 
     <form onSubmit={e => onSubmit(e)}>
-        <label htmlFor='username'>Username</label>
-        <input onChange={e => changeHandler(e)}type='text' name='username' placeholder='Username' value={username} />
-        <label htmlFor='password'>Password</label>
-        <input onChange={e => changeHandler(e)}type='password' name='password' placeholder='Password' value={password} />
-        <button type='submit'>Submit</button>
+        <div class ='field'>
+            <p class='control has-icons-left has-icons-right'>
+                <input class='input is-large' onChange={e => changeHandler(e)}type='text' name='username' placeholder='Username' value={username} />
+                <span class='icon is-medium is-left'>
+                    <i class='far fa-smile'></i>
+                </span>
+            </p>
+        </div>
+        <div class='field'>
+            <p class='control has-icons-left'>
+                <input class='input is-large' onChange={e => changeHandler(e)}type='password' name='password' placeholder='Password' value={password} /><br/>
+                <span class='icon is-medium is-left'>
+                    <i class='fas fa-lock'></i>
+                </span>
+            </p>
+        </div>
+        <button class='button is-link' type='submit'>Submit</button>
     </form>
 
 export default Register;

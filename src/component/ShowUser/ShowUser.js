@@ -90,7 +90,7 @@ class ShowUser extends Component {
                         <form onSubmit={(e) => this.updateUser(e)}>
                             <input onChange={this.changeHandler} type='text' name='username' placeholder='username'
                             value={this.state.username} />
-                            <button type='submit'>Update</button>
+                            <button type='submit'>Update!</button>
                         </form>
                     </Modal>
                     {
