@@ -46,6 +46,7 @@ class ShowUser extends Component {
                 method: 'DELETE'
             });
             const removeRestaurantJson = await removeRestaurant.json();
+            this.props.doSetCurrentUser(removeRestaurantJson.removeRestaurant)
             this.setState({
                 user: removeRestaurantJson.user
             });

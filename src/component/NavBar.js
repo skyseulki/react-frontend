@@ -6,7 +6,7 @@ import './NavBar.css'
 
 const NavBar = ({ currentUser, doLogOut }) => 
     <div className="navbar is-primary">
-        <NavLink className='navbar-item' to={routes.ROOT} exact activeClassName='active'>ROOT </NavLink>
+        {/* <NavLink className='navbar-item' to={routes.ROOT} exact activeClassName='active'>ROOT </NavLink> */}
         {/* <NavLink className='navbar-item' to={routes.POSTS} exact activeClassName='active'>POSTS </NavLink> */}
         <NavLink className='navbar-item' to={routes.RESTAURANTS} exact activeClassName='active'>Restaurants </NavLink>
         <NavLink className='navbar-item' to={routes.REGISTER} activeClassName='active'>Register </NavLink>
