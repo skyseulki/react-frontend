@@ -1,5 +1,5 @@
 export const ROOT = '/'
-export const HOME = '/home'
+export const REGISTER = '/register'
 export const POSTS = '/posts'
 export const RESTAURANTS = '/restaurants'
 export const USERS = '/users'

@@ -33,7 +33,7 @@ class RestaurantsContainer extends Component {
         const { currentUser } = this.props
         return(
             <div>
-                <Restaurants restaurants={ restaurants } currentUser={currentUser}/>
+                <Restaurants doSetCurrentUser={this.props.doSetCurrentUser} restaurants={ restaurants } currentUser={currentUser}/>
             </div>
         )
     }
