@@ -85,7 +85,7 @@ class ShowUser extends Component {
     render() {
         return (
             <div>
-                <h1>Hello, {this.props.currentUser && this.props.currentUser.username}</h1>
+                <h1>Hellllllo, {this.props.currentUser && this.props.currentUser.username}</h1>
                 <main>
                     <Modal show={this.state.show} handleClose={this.hideModal}>
                         <form onSubmit={(e) => this.updateUser(e)}>

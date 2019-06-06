@@ -6,12 +6,12 @@ const client = yelp.client(process.env.API_KEY)
 /* GET home page. */
 router.get('/', async (req, res) => {
   client.search({
-    term: 'Restaurants',
+    term: `${req.body.term}`,
     location: 'Los Angeles, CA',
+    limit: 50
   })
   .then(response => {
     const allRestaurants = response.jsonBody.businesses;
-    // console.log(response.jsonBody.businesses[0].name);
     res.json({ 
       status: 200,
       data: allRestaurants 
@@ -23,9 +23,21 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  return res.json({
-    body: req.body
-  });
+  client.search({
+    term: `${req.body.term}`,
+    location: 'Los Angeles, CA',
+    limit: 50
+  })
+  .then(response => {
+    const allRestaurants = response.jsonBody.businesses;
+    res.json({ 
+      status: 200,
+      data: allRestaurants 
+    })
+  })
+  .catch(err => {
+    res.send(err);
+  })
 });
 
 router.put('/', (req, res) => {

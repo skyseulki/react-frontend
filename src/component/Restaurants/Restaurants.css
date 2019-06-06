@@ -2,3 +2,20 @@ img {
     width: 30%;
 }
 
+.restaurant-wrapper {
+    background: #8D9EBA;
+    width: 33.33vw;
+    height: 30vh;
+    /* display: inline-block; */
+    float: left;
+    border: 2px solid red;
+}
+
+.rest-item {
+    width: 100vw;
+}
+
+.list-link {
+    color: white;
+    font-size: 30px;
+}

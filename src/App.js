@@ -12,12 +12,15 @@ import './App.css';
 
 class App extends Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    isLogged: false
+
   }
 
   doSetCurrentUser = user =>
     this.setState({
-      currentUser: user
+      currentUser: user,
+      isLogged: true
     })
 
   doLogOut = () =>
