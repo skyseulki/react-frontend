@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Restaurants from '../Restaurants/Restaurants';
-import './RestaurantsContainer.css'
+import './RestaurantsContainer.css';
 
 
 const CHOICES = ['Food', 'Restaurant', 'Dessert', 'Museum', 'Live Bars']

@@ -1,10 +1,8 @@
 import React from 'react';
+import * as routes from '../constants/routes';
 import { NavLink } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
-import styled from 'styled-components'
-
-import * as routes from '../constants/routes'
-import './NavBar.css'
+import './NavBar.css';
 
 const NavBar = ({ currentUser, doLogOut }) => 
     <Navbar expand='lg'>
@@ -15,16 +13,16 @@ const NavBar = ({ currentUser, doLogOut }) =>
         {/* <NavLink className='navbar-item' to={routes.POSTS} exact activeClassName='active'>POSTS </NavLink> */}
             <Nav className='ml-auto'>
                 <Nav.Item>
-                    <NavLink to={routes.RESTAURANTS} exact activeClassName='active'>Restaurants </NavLink>
+                    <NavLink to={routes.RESTAURANTS} exact activeClassName='active'>Browse </NavLink>
                 </Nav.Item>
         {
             currentUser
-                ? <Nav.Item><NavLink to={routes.POSTS} activeClassName='active'>Create a Date!</NavLink></Nav.Item>
+                ? <Nav.Item><NavLink to={routes.RESTAURANTS} activeClassName='active'>Create a Date!</NavLink></Nav.Item>
                 : <Nav.Item><NavLink to={routes.REGISTER} activeClassName='active'>Register </NavLink></Nav.Item>
         }
         {
             currentUser
-                && <Nav.Item><NavLink exact to={`${routes.USERS}/${currentUser._id}`} activeClassName='active'>{currentUser.username}'s PROFILE </NavLink></Nav.Item>
+                && <Nav.Item><NavLink exact to={`${routes.USERS}/${currentUser._id}`} activeClassName='active'>{currentUser.username}'s Profile </NavLink></Nav.Item>
         }
         {
             currentUser

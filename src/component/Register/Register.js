@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import './Register.css'
-import styled from 'styled-components'
+import { Row, Col, Button, Form } from 'react-bootstrap';
+import './Register.css';
+
+
 
 class Register extends Component {
     state = {
@@ -10,7 +13,7 @@ class Register extends Component {
         logged: false
     }
 
-    changeHandler = e => {
+    changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -28,7 +31,7 @@ class Register extends Component {
     });
     
         const parsedResponse = await registerResponse.json();
-        console.log(parsedResponse)
+        // console.log(parsedResponse)
         //parsedResponse.success
         if(parsedResponse.user){ 
             this.props.doSetCurrentUser(parsedResponse.user)
@@ -39,45 +42,53 @@ class Register extends Component {
     };
 
     render(){
-        // console.log(this.state)
-        const { username, password } = this.state
+        const { logged, username, password } = this.state
         return (
-            <div>
-                <h1 class='message is-large'>Register your account</h1>
-                {
-                    this.state.logged
-                    ? <Redirect to={`/users/${this.props.currentUser._id}`} />
-                    : <RegisterForm 
-                        changeHandler={this.changeHandler}
-                        onSubmit={this.onSubmit}
-                        username={username}
-                        password={password}
-                    />
-                }
-            </div>
-        )
+            logged
+            ? <Redirect to={`/users/${this.props.currentUser._id}`} />
+            : <RegisterForm 
+                changeHandler={this.changeHandler}
+                onSubmit={this.onSubmit}
+                username={username}
+                password={password}
+                />
+            )
     }
 }
 
 const RegisterForm = ({ changeHandler, onSubmit, username, password }) => 
-    <form onSubmit={e => onSubmit(e)}>
-        <div class ='field'>
-            <p class='control has-icons-left has-icons-right'>
-                <input class='input is-large' onChange={e => changeHandler(e)}type='text' name='username' placeholder='Username' value={username} />
-                <span class='icon is-medium is-left'>
-                    <i class='far fa-smile'></i>
-                </span>
-            </p>
-        </div>
-        <div class='field'>
-            <p class='control has-icons-left'>
-                <input class='input is-large' onChange={e => changeHandler(e)}type='password' name='password' placeholder='Password' value={password} /><br/>
-                <span class='icon is-medium is-left'>
-                    <i class='fas fa-lock'></i>
-                </span>
-            </p>
-        </div>
-        <button class='button is-link' type='submit'>Submit</button>
-    </form>
+    <Row>
+        <Col>
+            <Form onSubmit={e => onSubmit(e)}>
+                <h4 className='register-headline'>Create an account</h4><br/><br/>
+                <Form.Group className='register' controlId='formBasicUsername'>
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control size='lg' input onChange={e => changeHandler(e)}type='text' name='username' placeholder='username' value={username} />
+                </Form.Group>
+                
+                <Form.Group  className='register' controlId='formBasicPassword'>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control size='lg' input onChange={e => changeHandler(e)}type='password' name='password' placeholder='password' value={password} />
+                    <Form.Text className='text-muted'>
+                        Must contain more than 6 characters
+                    </Form.Text>
+                </Form.Group>
 
+                <Form.Group  className='register' controlId='formBasicRePassword'>
+                    <Form.Label>Verify Password</Form.Label>
+                    <Form.Control size='lg' input onChange={e => changeHandler(e)}type='password' name='password' placeholder='re-enter your password' value={password} />
+                </Form.Group><br/>
+
+            <Button className='register' variant='primary' type='submit'>Create!</Button>
+            <p className='login-link'>Already a user?<Link to={'/login'}>Click here!</Link></p>
+            </Form>
+        </Col>
+
+        <Col>
+            <div className='register-right'>
+                <img className='register-img' src='img/register.png' alt='Register Img' />
+            </div>
+        </Col>
+    </Row>
+    
 export default Register;

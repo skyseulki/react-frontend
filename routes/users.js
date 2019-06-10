@@ -4,6 +4,18 @@ const router = express.Router();
 const User = require('../models/User')
 
 /* GET users listing. */
+
+router.get('/', async(req, res) => {
+  try{
+    const getUsers = await User.find({})
+    res.json({getUsers})
+  }catch(err){
+    return err
+  }
+})
+
+
+
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
@@ -12,6 +24,16 @@ router.get('/:id', async (req, res) => {
     res.json({err})
   }
 });
+
+// router.get('/:id/restaurants', async(req, res) => {
+//   try{
+//     const user = await User.findById(req.params.id)
+//     res.json({user:restaurants})
+//   }catch(err){
+//     return err
+//   }
+// })
+
 
 router.post('/', async (req, res) => {
   try {
@@ -43,7 +65,7 @@ router.delete('/:id/restaurants/:restId', async (req, res) => {
     return r.id != req.params.restId;
   });
   await foundUser.save();
-  res.json({ user: foundUser })
+  res.json({ user: foundUser, deleted: true })
   // try {
   //   const removeRestaurant = await restaurantId.findByIdAndRemove(req.params.id)
   //   const foundUser = await User.findOne({

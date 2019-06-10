@@ -1,7 +1,37 @@
-h1 {
-    text-align: center;
+.register-headline {
+    font-family: 'Dunbar-Tall', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    margin-left: 140px;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
 }
 
-.field {
-    text-align: center;
+.register {
+    width: 35%;
+    align-content: center;
+    margin-left: 140px;
+}
+
+.register-btn {
+    margin-left: 230px;
+}
+
+.login-link {
+    margin-left: 170px;
+    padding-top: 1rem;
+    font-size: 15px;
+    font-family: 'Dunbar-Tall', sans-serif;
+    font-weight: 400;
+}
+
+.register-right {
+    /* border: 1px solid red; */
+}
+
+.register-img {
+    width: 94%;
+    padding-top: 3rem;
+    padding-right: 3rem;
 }

@@ -45,7 +45,7 @@ router.put('/', (req, res) => {
 });
 
 router.delete('/', (req, res) => {
-  return res.json({data: 'Received a DELETE HTTP method'});
+  return res.json({data: 'Received a DELETE HTTP method', deleted: true});
 });
 
 

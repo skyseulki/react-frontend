@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './Restaurants.css'
-import { Card, CardDeck, Col } from 'react-bootstrap'
-import styled from 'styled-components'
+import './Restaurants.css';
+import styled from 'styled-components';
 
 const CardStyle = styled.div`
 
