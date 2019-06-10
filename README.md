@@ -10,7 +10,7 @@ With dating apps all targeting the same audience, this one is specifically for t
 
 ### Built With
 
-* [Yelp](https://www.yelp.com/developers/documentation/v3/get_started)
+* [Yelp Fusion](https://www.yelp.com/developers/documentation/v3/get_started)
 * [React](https://github.com/facebook/create-react-app)
 * Node
 * [Express](https://www.npmjs.com/package/express)

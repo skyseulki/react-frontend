@@ -39,22 +39,30 @@ class ShowUser extends Component {
         }
     } 
 
-    deleteRestaurant = async (id, e) => {
-        try {
-            const removeRestaurant = await fetch(`/users/${this.props.match.params.id}/restaurants/${id}`,
-            {
-                method: 'DELETE'
-            });
-            const removeRestaurantJson = await removeRestaurant.json();
-            this.props.doSetCurrentUser(removeRestaurantJson.removeRestaurant)
-            this.setState({
-                user: removeRestaurantJson.user
-            });
+    deleteRes = (e) => {
+        // console.log(e.currentTarget.value)
+        this.props.delRestaurants(e.currentTarget.value)
+    }
 
-        } catch(err){
-            console.log(err)
-        }
-    };
+    // deleteRestaurant = async (id, e) => {
+    //     try {
+    //         const removeRestaurant = await fetch(`/users/${this.props.match.params.id}/restaurants/${id}`,
+    //         {
+    //             method: 'DELETE',
+    //             credentials: 'include'
+
+    //         });
+    //         const removeRestaurantJson = await removeRestaurant.json();
+    //         // this.props.doSetCurrentUser(removeRestaurantJson)
+    //         this.setState({
+    //             user: removeRestaurantJson.user
+    //         });
+    //         console.log(removeRestaurantJson)
+
+    //     } catch(err){
+    //         console.log(err)
+    //     }
+    // };
 
         
     changeHandler = (e) => {
@@ -83,9 +91,10 @@ class ShowUser extends Component {
     }
 
     render() {
+        const { allRestaurant } = this.props
         return (
             <div>
-                <h1>Hello, {this.props.currentUser && this.props.currentUser.username}</h1>
+                <h1>Hellllllo, {this.props.currentUser && this.props.currentUser.username}</h1>
                 <main>
                     <Modal show={this.state.show} handleClose={this.hideModal}>
                         <form onSubmit={(e) => this.updateUser(e)}>
@@ -99,11 +108,11 @@ class ShowUser extends Component {
                             && <button onClick={this.showModal}>Edit Profile</button>
                     }
                 </main>
-                {this.props.currentUser && this.props.currentUser.restaurants && this.props.currentUser.restaurants.map((r,i) => 
+                {allRestaurant.map((r,i) => 
                     <li>
                         {/* <a href={r.url}>{r.name}</a> */}
                         <Link to={r.url}>{r.name}</Link>
-                        <button onClick={() => this.deleteRestaurant(r.id)}>Delete</button>
+                        <button value={r._id} onClick={this.deleteRes}>Delete</button>
                     </li>
                 )}
             </div>

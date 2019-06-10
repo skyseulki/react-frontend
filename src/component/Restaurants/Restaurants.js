@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import './Restaurants.css'
+import './Restaurants.css';
+import styled from 'styled-components';
+
+const CardStyle = styled.div`
+
+    h3 {
+        // color: red;
+    }
+`
+
 
 
 class Restaurants extends Component {
@@ -7,6 +16,7 @@ class Restaurants extends Component {
     // we can loop over it using '.map' method
     doAddResturant = async (id, name) => {
         const { currentUser } = this.props
+
         const addRestaurant= await fetch('/restaurants', {
             method: 'POST',
             credentials: 'include',
@@ -22,24 +32,30 @@ class Restaurants extends Component {
     render () {
         const restaurantsList = this.props.restaurants.map((restaurant, i) => {
             return(
-                <li key={i}>
-                    <span><a href={restaurant.url}>{restaurant.name}</a>  {restaurant.price}</span><br/>
-                    <img src={restaurant.image_url}></img><br/>
-                    <small>{restaurant.categories.map((c, idx) => <span key={idx}>{c.title}</span>)}</small><br/>
-                    {
-                        this.props.currentUser
-                            && !this.props.currentUser.restaurants.some(r => r.id === restaurant.id) && <button onClick={() => this.doAddResturant(restaurant.id, restaurant.name)}>Add</button>
-                    }<br/>
-                </li>)
+                <CardStyle> 
+        
+                        <div className="restaurant-wrapper" key={i}>
+                            <span><a className='list-link' href={restaurant.url}>{restaurant.name}</a>  {restaurant.price}</span><br/>
+                            <div className="wrapper"><img src={restaurant.image_url} className="restaurant"></img></div><br/>
+                            <small>• {restaurant.categories.map((c, idx) => <span key={idx}> {c.title} • </span>)}</small><br/>
+                            {
+                                this.props.currentUser
+                                    && !this.props.currentUser.restaurants.some(r => r.id === restaurant.id) && <button onClick={() => this.doAddResturant(restaurant.id, restaurant.name)} className="btn">Add</button>
+                            }<br/>
+                        </div>
+                            
+                </CardStyle>
+            )
         })
         return (
-            <div>
-                <h3>All restaurants in Los Angeles, CA</h3>
-                <ul>
-                    {restaurantsList}
-                </ul>
-            </div>
+            <CardStyle>
+                    <h3>Los Angeles, CA</h3>
+                    <div className="rest-item">
+                        {restaurantsList}
+                    </div>
+            </CardStyle>
         )
+        
     }
 };
 

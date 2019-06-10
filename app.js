@@ -39,15 +39,23 @@ app.post('/restaurants', async (req, res) => {
     user: foundUser
   })
 })
+app.get('/get', (req, res)=> {
+  res.send('hello')
+})
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
 
+
+// catch 404 and forward to error handler
+// app.use((req, res, next) => {
+//   next(createError(404));
+// });
+
+// app.listen(8080, ()=>{
+//   console.log('port:', 8080)
+// })
 
 module.exports = app;

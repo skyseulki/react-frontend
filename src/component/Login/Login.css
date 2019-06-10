@@ -1,10 +1,44 @@
-form {
-    text-align: center;
-    width: 30%;
-
+.login-headline {
+    font-family: 'Dunbar-Tall', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    margin-left: 140px;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
 }
 
-button{
-    color: green;
+.login {
+    width: 35%;
+    align-content: center;
+    margin-left: 140px;
+}
+
+.login-btn {
+    width: 35%;
+    margin-left: 140px;
+    margin-top: 1rem;
+}
+
+.register-link {
+    margin-left: 184px;
+    padding-top: 2rem;
+    font-size: 15px;
+    font-family: 'Dunbar-Tall', sans-serif;
+    font-weight: 400;
+}
+
+.login-msg {
+    color: red;
+    margin-left: 130px;
+    font-size: 17px;
+    padding-top: 9px;
+    margin-top: 1rem;
+}
+
+.login-img {
+    width: 89%;
+    padding-top: 3rem;
+    padding-right: 3rem;
 }
 
