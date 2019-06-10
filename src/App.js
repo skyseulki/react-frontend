@@ -25,7 +25,7 @@ class App extends Component {
         credentials: 'include'
       })
       const deletedRes = await delRes.json();
-      console.log(deletedRes, info)
+      // console.log(deletedRes, info)
       if(deletedRes.deleted){
         this.setState({
           allRestaurant: [...this.state.allRestaurant.filter(r => r._id !== info)]
@@ -45,7 +45,7 @@ class App extends Component {
         allRestaurant: currentUser.restaurants
       })
     
-      console.log('inside getres')
+      // console.log('inside getres')
     }catch(err){  
       return err
     }
@@ -66,8 +66,8 @@ class App extends Component {
 
   render() {
     const { currentUser, allRestaurant } = this.state
-    console.log('current user id',this.state.currentUser)
-    console.log('array of restaurants:', this.state.allRestaurant)
+    // console.log('current user id',this.state.currentUser)
+    // console.log('array of restaurants:', this.state.allRestaurant)
     return (
       <div>
         <NavBar currentUser={currentUser}doLogOut={this.doLogOut} />
@@ -79,7 +79,12 @@ class App extends Component {
           <Route exact path={routes.POSTS} render={() => <div>POSTS</div>} />
           <Route exact path={routes.RESTAURANTS} render={() => <RestaurantsContainer currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/> } />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
-          <Route render={() => <div>NOT FOUND</div>} />
+          <Route render={() => 
+            <div>
+              <p className='not-found-heading'>The page you are looking for is not found. Please go back.</p>
+              <img className='not-found' src='img/404.png' alt='404 - Page Not Found' />
+            </div>
+          } />
         </Switch>
       </div>
     );

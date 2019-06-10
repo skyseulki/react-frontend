@@ -1,1 +1,10 @@
+.not-found {
+    width: 80%;
+    margin-left: 10rem;
+}
 
+.not-found-heading {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 25px;
+}
