@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import './Register.css';
-
 
 
 class Register extends Component {

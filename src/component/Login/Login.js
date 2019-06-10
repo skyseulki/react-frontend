@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Row, Col, Button, Form } from 'react-bootstrap';
 import './Login.css';
+
 
 class Login extends Component {
     state = {
@@ -42,36 +44,40 @@ class Login extends Component {
     };
 
     render() {
-        const { username, password } = this.state
+        const { logged, username, password } = this.state
         return (
-            this.state.logged
+            logged
             ? <Redirect to={`/users/${this.props.currentUser._id}`} />
-            : <form onSubmit={this.onSubmit}>
-                <h1 class='message is-large'>Login</h1>
-                <div class='field'>
-                    <p class='control has-icons-left has-icons-right'>
-                        <input class='input is-large' type='text' name='username' placeholder='Username' value={username} onChange={this.changeHandler} />
-                        <span class='icon is-medium is-left'>
-                            <i class='far fa-smile'></i>
-                        </span>
-                        <span class='icon is-medium is-right'>
-                            <i class='fas fa-check'></i>
-                        </span>
-                    </p>
-                </div>
-                <div class='field'>
-                    <p class='control has-icons-left'>
-                        <input class='input is-large' type='password' name='password' placeholder='Password' value={password} onChange={this.changeHandler} />
-                        <span class='icon is-medium is-left'>
-                            <i class='fas fa-lock'></i>
-                        </span>
-                    </p>
-                </div>
-                <button class="button is-link" type='submit'>Submit</button><br/>
-                {
-                    this.state.message
-                }
-            </form>
+            : <Row>
+                <Col>
+                    <Form onSubmit={this.onSubmit}>
+                    <h4 className='login-headline'>Welcome back</h4><br/><br/>
+                    <Form.Group className='login' controlId='formBasicUsername'>
+                        <Form.Label>Username</Form.Label>
+                            <Form.Control size='lg' input type='text' name='username' placeholder='username' value={username} onChange={this.changeHandler} />
+                    </Form.Group>
+
+                    <Form.Group className='login' controlId='formBasicPassword'>
+                        <Form.Label>Password</Form.Label>
+                            <Form.Control size='lg' input type='password' name='password' placeholder='Password' value={password} onChange={this.changeHandler} />
+                    </Form.Group>
+                    <Button className='login-btn' variant='primary' type='submit'>Log in</Button><br/>
+                    <div className= 'login-msg'>
+                        {
+                            
+                            this.state.message
+                        }
+                    </div> 
+                    <p className='register-link'>Not a user?<Link to={'/register'}>Click here!</Link></p>
+                    </Form>
+                </Col>
+
+                <Col>
+                    <div className='login-right'>
+                        <img className='login-img' src='img/login.svg' alt='Login Img' />
+                    </div>
+                </Col>
+            </Row>
         )
     };
 };
